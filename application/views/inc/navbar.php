@@ -1,0 +1,102 @@
+<link href="<?=base_url()?>public/css/logo-nav.css" rel="stylesheet">
+<link href="<?=base_url()?>public/css/bootstrap.vertical-tabs.css" rel="stylesheet" type="text/css" />
+<link href="<?=base_url()?>public/css/bootstrap.vertical-tabs.min.css" rel="stylesheet" type="text/css" />
+<link href="<?=base_url()?>public/css/bootstrap-table.css" rel="stylesheet" type="text/css" />
+<link href="<?=base_url()?>public/css/jquery-ui.min.css" rel="stylesheet">
+<link href="<?=base_url()?>public/css/jquery-ui.structure.css" rel="stylesheet">
+<link href="<?=base_url()?>public/css/jquery-ui.structure.min.css" rel="stylesheet">
+<link href="<?=base_url()?>public/css/jquery-ui.theme.css" rel="stylesheet">
+<link href="<?=base_url()?>public/css/jquery-ui.theme.min.css" rel="stylesheet">
+<link href="<?=base_url()?>public/css/jquery-ui.css" rel="stylesheet">
+
+<script src="<?=base_url()?>public/js/jquery-2.1.1.js"></script>
+<script src="<?=base_url()?>public/js/jquery-2.1.1.min.js"></script>
+<script src="<?=base_url()?>public/js/jquery.js"></script>
+<script src="<?=base_url()?>public/js/flat-ui.min.js"></script>
+<script src="<?=base_url()?>public/js/application.js"></script>
+<script src="<?=base_url()?>public/js/bootstrap-table.js"></script>
+<script src="<?=base_url()?>public/js/jquery-form.js"></script>
+<script src="<?=base_url()?>public/js/jquery-ui.js"></script>
+<script src="<?=base_url()?>public/js/jquery-ui.min.js"></script>
+<script src="<?=base_url()?>public/js/jquery.dataTables.js" type="text/javascript" charset="utf8" ></script>
+<script src="<?=base_url()?>public/js/jquery.dataTables.min.js" type="text/javascript" charset="utf8" ></script>
+
+
+
+<style type = "text/css">
+
+html, body{
+    background-image: url('<?=base_url()?>public/img/oble.png');
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+    background-position:bottom left;
+    height: 100%;
+}
+
+.ui-tabs
+{
+    background: none;
+}
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+
+}
+
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 20px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+
+input[readonly] {
+  font-size: 20px;  
+  background-color: white !important;
+  cursor: text !important;
+}
+
+.eTable, .wTable, .small{
+    font-size: 14px;
+}
+
+.small{
+    margin-top: 10px;
+    float: right;
+}
+
+#tabs1-1, #tabs2-1{
+    padding-bottom: 60px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="container-fluid">
+	<div class="navbar-header">
+    	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        </button>
+        <a class="navbar-brand" href=""> <img src="<?=base_url()?>public/img/navlogo1.png"/></a>
+    </div><!--navbar-header-->
+    <div class="navbar-collapse collapse">
+    	<ul class="nav navbar-nav navbar-right">
+        <p class="navbar-text"><span class="fui-user"></span>  Signed in as: <?=$username?></p>
+        <li class="active"><a href="logout.php"><span class="fui-exit"></span>  Log out</a></li>
+        </ul>
+    </div><!--navbar-collapse--> 
+</div> <!--container-fluid-->
+</div> <!--navbar-->
+
