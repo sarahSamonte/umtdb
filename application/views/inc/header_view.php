@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="<?=base_url()?>public/css/flat-ui.css"	/>
 <link rel="stylesheet" href="<?=base_url()?>public/css/bootstrap.min.css"	/>
 <link rel="stylesheet" href="<?=base_url()?>public/css/flat-ui.min.css"	/>
-<link rel="stylesheet" href="<?=base_url()?>public/css/demo.css"	/>
 <link rel="stylesheet" href="<?=base_url()?>public/css/style.css"	/>
 
 <link rel="shortcut icon" href="<?=base_url()?>public/img/logoimg.ico"	/>
