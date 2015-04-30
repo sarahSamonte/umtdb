@@ -44,7 +44,7 @@
 		
     
 		  <div class="pull-right">					
-        <form method="POST">
+        <?php echo form_open('adminPanel/buildingView'); ?>
           <input class= "btn btn-info" type="button" id="add_button" value="Add Building" data-toggle="modal" data-target="#addBuildingModal">					        
           <input type="hidden" id="viewBuilding" name="viewBuilding">
   				<input class= "btn btn-info" type="submit" id="view_button"  name="view_button" value="View Selected"	/>  				
@@ -56,7 +56,7 @@
     <div id="addBuildingModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-sm">
     <div class="modal-content">
-      <form id="addBuildingForm" name="addBuildingForm" method="post" action="">	
+      <?php echo form_open('adminPanel/addBuilding'); ?>
         <div class="modal-header modal-header-info">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title">Add Building TO DO: fit text</h4>
@@ -65,11 +65,13 @@
   			  <P>Username</P>	
           <input type="text" class="form-control" value="" placeholder="Username (Default: lowercase of Building Name)" name="username" id="username" />
           <P>Password</P> 
-          <input type="text" class="form-control" value="" placeholder="Password (Default: same as username)" name="password" id="password" />
+          <input type="password" class="form-control" value="" placeholder="Password (Default: same as username)" name="password" id="password" />
           <p>Building Name:</p>
         	<input required="required" type="text" class="form-control" value="" placeholder="Building Name" name="buildingName" id="buildingName" />
+          <p>Email:</p>
+          <input required="required" type="text" class="form-control" value="" placeholder="Email" name="email" id="email" />
         	<p>Address:</p>
-        	<input required="required" type="text" class="form-control" value="" placeholder="Address" name="buildingAddress" id="buildingAddress" />
+        	<input required="required" type="text" class="form-control" value="" placeholder="Address" name="address" id="address" />
        	</div><!-- modal-body -->
         <div class="modal-footer">
           <input type="submit" class="btn btn-info pull-right" value="Add" name="addBldg" id="addBldg" />		                 
@@ -88,11 +90,14 @@
     <div class="page-header">
       <h4>Statistics</h4>	
     </div><br/><!-- page-header -->		
-	  <form method="POST" action="" class="form-horizontal" role="form">
+    <?php 
+      $attributes = array('class' => 'form-horizontal', 'role' => 'form');
+      echo form_open('adminPanel/statistics', $attributes);
+    ?>	 
 		  <div class="form-group">
 			  <label for="s_month" class="col-xs-3 control-label">Starting Month</label>
 				<div class="col-xs-6">									
-				<select required="required" class="form-control select select-info" data-toggle="select" id="s_month" name="s_month">
+				<select class="form-control select select-info" data-toggle="select" id="s_month" name="s_month">
 				  <option value="">Starting month (Default: January)</option>
 					<option value="1">January</option>
 					<option value="2">February</option>
@@ -112,7 +117,7 @@
 			<div class="form-group">
 				<label for="e_month" class="col-xs-3 control-label">Ending Month</label>
 				<div class="col-xs-6">									
-					<select required="required" class="form-control select select-info" data-toggle="select" id="e_month" name="e_month">
+					<select class="form-control select select-info" data-toggle="select" id="e_month" name="e_month">
 						<option value="">Ending month (Default: Current Month)</option>
 						<option value="1">January</option>
 						<option value="2">February</option>
@@ -132,13 +137,13 @@
 			<div class="form-group">
 				<label for="s_year" class="col-xs-3 control-label">Starting Year</label>
 				<div class="col-xs-6">									
-					<input required="required" type="text" class="form-control" id="s_year" name="s_year" placeholder="Starting year (Default: 2010)" >
+					<input type="text" class="form-control" id="s_year" name="s_year" placeholder="Starting year (Default: 2010)" >
 				</div><!-- col-xs-6 -->
 			</div><!-- form-group -->
 			<div class="form-group">
 				<label for="e_year" class="col-xs-3 control-label">Ending Year</label>
 				<div class="col-xs-6">									
-					<input required="required" type="text" class="form-control" id="e_year" name="e_year" placeholder="Ending year (Default: Current Year)" >
+					<input type="text" class="form-control" id="e_year" name="e_year" placeholder="Ending year (Default: Current Year)" >
 				</div><!-- col-xs-6 -->
 			</div> <!-- form-group -->
 			<div class="form-group">
@@ -303,3 +308,27 @@
 </div> <!-- container -->
 <div class = "push"></div>
 
+<script type="text/javascript">
+  $(document).ready( function () {
+    var table = $('#buildings_table').DataTable();
+    var selected;
+    
+    $('#b_table_body').on( 'click', 'tr', function () {
+      if ( $(this).hasClass('selected') ) {
+        $(this).removeClass('selected');
+      }
+      else {
+        table.$('tr.selected').removeClass('selected');
+        $(this).addClass('selected');
+      }
+      selected = table.row('.selected').data();
+      selected = selected.toString();
+      selected = selected.split(',')[1];      
+      alert(selected);
+      document.getElementById("viewBuilding").value = selected;      
+    } );
+    
+    
+    
+  } );
+</script>

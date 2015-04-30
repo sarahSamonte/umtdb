@@ -17,7 +17,7 @@
 <div class="tab-pane active" id="profile">
 <div class="tab-container">
   <div class="page-header">
-    <h4>User Profile</h4>
+    <h4><?=$buildingName?> Profile</h4>
   </div><br/> <!--page-header-->
   <div align="left">
   <table width="867" height="307" border="0" cellpadding="0" cellspacing="0">
@@ -70,8 +70,11 @@
   <div class="row">
   <div class="col-md-12">
     <br/>
-    <h6>Change Email Address</h6>
-    <form class="form-horizontal" role="form" method="POST" action="">
+    <h6>Change Email Address</h6>    
+      <?php 
+        $attributes = array('class' => 'form-horizontal', 'role' => 'form');
+        echo form_open('userPanel/changeEmail', $attributes);
+      ?>   
       <div class="form-group">
         <label for="new_email" class="col-xs-3 control-label">New Email address</label>
         <div class="col-lg-6">
@@ -89,7 +92,10 @@
   <div class="row">
   <div class="col-md-12"><br/>
     <h6>Change Password</h6>
-    <form class="form-horizontal" role="form" method="POST" action="">
+    <?php 
+      $attributes = array('class' => 'form-horizontal', 'role' => 'form');
+      echo form_open('userPanel/changePassword', $attributes);
+    ?>     
       <div class="form-group">
         <label for="current_pw" class="col-xs-3 control-label">Current Password</label>
         <div class="col-lg-6">
@@ -151,7 +157,7 @@
         <?php echo "<td>" . $ebill['genCharge'] . "</td>"; ?>
         <?php echo "<td>" . $ebill['transCharge'] . "</td>"; ?>
         <?php echo "<td>" . $ebill['distCharge'] . "</td>"; ?>
-        <?php echo "<td>" . "<a href=" . base_url() . "public/db_img/ebill/" . $ebill['imgDest'] . ">" . "View" . "</a>" . "</td>"; ?>
+        <?php echo "<td>" . "<a target='_blank' href=" . base_url() . "public/db_img/ebill/" . $ebill['imgDest'] . ">" . "View" . "</a>" . "</td>"; ?>
         <?php echo "</tr>"?>
       <?php endforeach ?>
     </tbody>		
@@ -184,7 +190,7 @@
         <?php echo "<td>" . $wbill['endDate'] . "</td>"; ?>
         <?php echo "<td>" . $wbill['totalCc'] . "</td>"; ?>
         <?php echo "<td>" . $wbill['totalCost'] . "</td>"; ?>        
-        <?php echo "<td>" . "<a href=" . base_url() . "public/db_img/wbill/" . $ebill['imgDest'] . ">" . "View" . "</a>" . "</td>"; ?>
+        <?php echo "<td>" . "<a target='_blank' href=" . base_url() . "public/db_img/wbill/" . $ebill['imgDest'] . ">" . "View" . "</a>" . "</td>"; ?>
         <?php echo "</tr>"?>
       <?php endforeach ?>
     </tbody>

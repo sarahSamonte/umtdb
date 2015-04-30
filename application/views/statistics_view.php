@@ -6,7 +6,7 @@
   <ul class="nav nav-tabs tabs-left" id="tabPanel">
 	 <li class="active"><a href="#elect" data-toggle="tab"><img src="<?=base_url()?>public/img/icons/png/Light-Bulb.png" height="100" width="100" class="displayed"/></a></li>
 	 <li><a href="#water" data-toggle="tab"><img src="<?=base_url()?>public/img/icons/png/Water-Tap.png" height="100" width="100" class="displayed"/></a></li>
-	 <li><a href="#"><img src="<?=base_url()?>public/img/icons/png/back.png" height="100" width="100" class="displayed"/></a></li>
+	 <li><a href="<?=site_url('adminPanel/main')?>"><img src="<?=base_url()?>public/img/icons/png/back.png" height="100" width="100" class="displayed"/></a></li>
   </ul>
 </div><!--col xs 2-->
 		    
@@ -34,6 +34,16 @@
     </tr>
     </thead>
     <tbody>    
+      <?php foreach ($ebillStat as $ebill): ?>       
+        <?php echo "<tr>"?>       
+        <?php echo "<td>" . $ebill['buildingName'] . "</td>"; ?>
+        <?php echo "<td>" . $ebill['submeterName'] . "</td>"; ?>
+        <?php echo "<td>" . $ebill['startDate'] . "</td>"; ?>
+        <?php echo "<td>" . $ebill['endDate'] . "</td>"; ?>
+        <?php echo "<td>" . $ebill['totalKwh'] . "</td>"; ?>
+        <?php echo "<td>" . $ebill['totalCost'] . "</td>"; ?>        
+        <?php echo "</tr>"?>
+      <?php endforeach ?>
     </tbody>
 	</table>
 </div> <!--tab container -->
@@ -55,6 +65,15 @@
     </tr>
     </thead>
     <tbody>
+      <?php foreach ($wbillStat as $wbill): ?>       
+        <?php echo "<tr>"?>       
+        <?php echo "<td>" . $wbill['buildingName'] . "</td>"; ?>
+        <?php echo "<td>" . $wbill['startDate'] . "</td>"; ?>
+        <?php echo "<td>" . $wbill['endDate'] . "</td>"; ?>
+        <?php echo "<td>" . $wbill['totalCc'] . "</td>"; ?>
+        <?php echo "<td>" . $wbill['totalCost'] . "</td>"; ?>        
+        <?php echo "</tr>"?>
+      <?php endforeach ?>
   	</tbody>
 	</table>
 </div> <!--tab container-->

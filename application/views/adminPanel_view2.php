@@ -7,7 +7,7 @@
 		<li class="active"><a href="#submeters" data-toggle="tab"><img src="<?=base_url()?>public/img/icons/png/submeter.png" height="100" width="100" class="displayed"/></a></li>
 	    <li><a href="#ebill" data-toggle="tab"><img src="<?=base_url()?>public/img/icons/png/Light-Bulb.png" height="100" width="100" class="displayed"/></a></li>
 	    <li><a href="#wbill" data-toggle="tab"><img src="<?=base_url()?>public/img/icons/png/Water-Tap.png" height="100" width="100"  class="displayed"/></a></li>
-	    <li><a href="#"><img src="<?=base_url()?>public/img/icons/png/back.png" height="100" width="100" class="displayed"/></a></li>
+	    <li><a href="<?=site_url('adminPanel/main')?>"><img src="<?=base_url()?>public/img/icons/png/back.png" height="100" width="100" class="displayed"/></a></li>
 	</ul>
 </div><!--col xs 2-->
 
@@ -52,7 +52,7 @@
 	    	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	        <h4 class="modal-title">Add Submeter</h4>
 		</div><!-- modal-header -->
-		<form id="form1" name="form1" method="post" action="">
+		<?php echo form_open('adminPanel/addSubmeter'); ?>
 		<div class="modal-body">
 	    	<p>Submeter Name:</p>	  		
 	        <input required="required" type="text" class="form-control" value="" placeholder="Submeter Name" name="submeterName" id="submeterName" />         
@@ -95,6 +95,20 @@
                 </tr>
                 </thead>
 				<tbody id="e_table_body" name="e_table_body">                
+					<?php foreach ($ebillList as $ebill): ?>       
+				        <?php echo "<tr>"?>       
+				        <?php echo "<td>" . $ebill['serviceID'] . "</td>"; ?>
+				        <?php echo "<td>" . $ebill['submeterName'] . "</td>"; ?>
+				        <?php echo "<td>" . $ebill['startDate'] . "</td>"; ?>
+				        <?php echo "<td>" . $ebill['endDate'] . "</td>"; ?>
+				        <?php echo "<td>" . $ebill['totalKwh'] . "</td>"; ?>
+				        <?php echo "<td>" . $ebill['totalCost'] . "</td>"; ?>
+				        <?php echo "<td>" . $ebill['genCharge'] . "</td>"; ?>
+				        <?php echo "<td>" . $ebill['transCharge'] . "</td>"; ?>
+				        <?php echo "<td>" . $ebill['distCharge'] . "</td>"; ?>
+				        <?php echo "<td>" . "<a href=" . base_url() . "public/db_img/ebill/" . $ebill['imgDest'] . ">" . "View" . "</a>" . "</td>"; ?>
+				        <?php echo "</tr>"?>
+				    <?php endforeach ?>
 				</tbody>								
 				</table>
 	            
@@ -214,6 +228,16 @@
 				</tr>
 				</thead>
 				<tbody id="w_table_body" name="w_table_body">
+					<?php foreach ($wbillList as $wbill): ?>       
+				    	<?php echo "<tr>"?>       
+				        <?php echo "<td>" . $wbill['serviceID'] . "</td>"; ?>
+				        <?php echo "<td>" . $wbill['startDate'] . "</td>"; ?>
+				        <?php echo "<td>" . $wbill['endDate'] . "</td>"; ?>
+				        <?php echo "<td>" . $wbill['totalCc'] . "</td>"; ?>
+				        <?php echo "<td>" . $wbill['totalCost'] . "</td>"; ?>        
+				        <?php echo "<td>" . "<a href=" . base_url() . "public/db_img/wbill/" . $ebill['imgDest'] . ">" . "View" . "</a>" . "</td>"; ?>
+				        <?php echo "</tr>"?>
+				    <?php endforeach ?>
 				</tbody>				
 				</table>
 				

@@ -30,6 +30,7 @@ class Index extends CI_Controller{
 			$sess_array = array(
 				'userID' => $result->userID,
 				'username' => $result->username,
+				'buildingName' => $result->buildingName,
 				'email' => $result->email,
 				'address' => $result->address,
 				'userType' => $result->userType
@@ -40,11 +41,11 @@ class Index extends CI_Controller{
 			
 			if($_SESSION['userType'] == 'admin'){
 				echo "<script>alert('admin'); </script>";
-				
+				redirect('/adminPanel/main');
 			}
 			else{
 				echo "<script>alert('user'); </script>";
-				
+				redirect('/userPanel/main');	
 			}
 		}	
 		else{
@@ -55,6 +56,11 @@ class Index extends CI_Controller{
 
 	function forgotPassword(){
 		
+	}	
+
+	function logout(){
+		$this->session->sess_destroy();
+		redirect('/index/view');
 	}
 
 }
