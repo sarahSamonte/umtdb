@@ -2,7 +2,7 @@
 <link href="<?=base_url()?>public/css/bootstrap.vertical-tabs.css" rel="stylesheet" type="text/css" />
 <link href="<?=base_url()?>public/css/bootstrap.vertical-tabs.min.css" rel="stylesheet" type="text/css" />
 <link href="<?=base_url()?>public/css/bootstrap-table.css" rel="stylesheet" type="text/css" />
-<link href="<?=base_url()?>public/css/jquery-ui.min.css" rel="stylesheet">
+<link href="<?=base_url()?>public/css/jquery-ui.css" rel="stylesheet">
 <link href="<?=base_url()?>public/css/jquery-ui.structure.css" rel="stylesheet">
 <link href="<?=base_url()?>public/css/jquery-ui.structure.min.css" rel="stylesheet">
 <link href="<?=base_url()?>public/css/jquery-ui.theme.css" rel="stylesheet">
