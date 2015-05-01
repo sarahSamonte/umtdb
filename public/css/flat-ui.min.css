@@ -104,3 +104,7 @@ margin: 0 auto -4em;
 	margin:0;
 	padding:0;
 }
+.form-inline .form-group{
+    margin-left: 0;
+    margin-right: 0;
+}

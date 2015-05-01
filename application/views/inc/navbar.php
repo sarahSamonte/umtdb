@@ -8,8 +8,9 @@
 <link href="<?=base_url()?>public/css/jquery-ui.theme.css" rel="stylesheet">
 <link href="<?=base_url()?>public/css/jquery-ui.theme.min.css" rel="stylesheet">
 <link href="<?=base_url()?>public/css/jquery-ui.css" rel="stylesheet">
-<link href="<?=base_url()?>public/dataTables/media/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="<?=base_url()?>public/dataTables/media/css/jquery.dataTables.css" rel="stylesheet">
 <link href="<?=base_url()?>public/dataTables/media/css/jquery.dataTables_themeroller.css" rel="stylesheet">
+<link rel="stylesheet" href="<?=base_url()?>public/css/dataTables.bootstrap.css" />
 
 <script src="<?=base_url()?>public/js/jquery-2.1.1.js"></script>
 <script src="<?=base_url()?>public/js/jquery-2.1.1.min.js"></script>
