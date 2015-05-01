@@ -115,7 +115,7 @@
 			</div><!-- tabs1-1 -->
 			<div id="tabs1-2">
 				<div class="page-header">
-					<h4>Electricity Consumption Form</h4>						
+					<h6>Electricity Consumption Form</h6>						
 					<p></p>					
 				</div><br/><!-- page-header -->								 
 				<form class="form-horizontal" method="POST" action=" "role="form" enctype='multipart/form-data'>
