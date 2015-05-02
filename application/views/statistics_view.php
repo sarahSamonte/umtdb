@@ -4,10 +4,10 @@
 <!-- Nav tabs -->
 <div class="col-xs-2">
   <ul class="nav nav-tabs tabs-left" id="tabPanel">
-	 <li class="active"><a href="#elect" data-toggle="tab"><img src="<?=base_url()?>public/img/icons/png/Light-Bulb.png" height="100" width="100" class="displayed"/></a></li>
+	 <li><a href="#elect" data-toggle="tab"><img src="<?=base_url()?>public/img/icons/png/Light-Bulb.png" height="100" width="100" class="displayed"/></a></li>
 	 <li><a href="#water" data-toggle="tab"><img src="<?=base_url()?>public/img/icons/png/Water-Tap.png" height="100" width="100" class="displayed"/></a></li>
-	 <li><a href="<?=site_url('adminPanel/main')?>"><img src="<?=base_url()?>public/img/icons/png/back.png" height="100" width="100" class="displayed"/></a></li>
   </ul>
+  <a href="<?=site_url('adminPanel/main')?>"><img src="<?=base_url()?>public/img/icons/png/backbtn.png" onmouseover="this.src='<?=base_url()?>public/img/icons/png/backhover.png'" onmouseout="this.src='<?=base_url()?>public/img/icons/png/backbtn.png'" class="displayed"/></a>
 </div><!--col xs 2-->
 		    
 <div class="col-xs-10">
@@ -85,3 +85,25 @@
 </div> <!--row--> 
 <div class = "push"></div>
 </div> <!-- end of container div -->
+
+<script>
+$('#tabPanel a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
+
+    // store the currently selected tab in the hash value
+    $("ul.nav-tabs > li > a").on("shown.bs.tab", function (e) {
+        var id = $(e.target).attr("href").substr(1);
+        window.location.hash = id;
+    });
+
+    // on load of the page: switch to the currently selected tab
+    var hash = window.location.hash;
+  if(hash) {
+    $('#tabPanel a[href="' + hash + '"]').tab('show');
+  }
+  else{
+     $('#tabPanel a[data-toggle="tab"]:first').tab('show');
+        }
+</script>
