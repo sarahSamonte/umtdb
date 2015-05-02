@@ -4,7 +4,7 @@
           <!-- Nav tabs -->
 <div class="col-xs-2">
 <ul class="nav nav-tabs tabs-left" id="tabPanel">
-  <li class="active"><a href="#profile" data-toggle="tab"><img src="<?=base_url()?>public/img/icons/png/User-Profile.png" height="100" width="100" class="displayed"/></a></li>
+  <li><a href="#profile" data-toggle="tab"><img src="<?=base_url()?>public/img/icons/png/User-Profile.png" height="100" width="100" class="displayed"/></a></li>
   <li><a href="#update" data-toggle="tab"><img src="<?=base_url()?>public/img/icons/png/User-Modify.png" height="100" width="100" class="displayed"/></a></li>
 	<li><a href="#viewElectric" data-toggle="tab"><img src="<?=base_url()?>public/img/icons/png/Light-Bulb.png" height="100" width="100"  class="displayed"/></a></li>
 	<li><a href="#viewWater" data-toggle="tab"><img src="<?=base_url()?>public/img/icons/png/Water-Tap.png" height="100" width="100"  class="displayed"/></a></li>
@@ -62,68 +62,71 @@
   </div> <!-- align-left -->
 </div> <!--tab container -->
 </div> <!--tab pane-->
+
 <div class="tab-pane" id="update">
-<div class="tab-container">
+  <div class="tab-container">
   <div class="page-header">
-    <h6>Update Profile</h6>	
-  </div><!-- page-header -->
-  <div class="row">
-  <div class="col-md-12">
-    <br/>
-    <h6>Change Email Address</h6>    
-      <?php 
+    <h4>Update Profile</h4>
+    </div><!-- page-header -->
+    <div class="row">
+    <div class="col-md-12">
+      <h6>Change Email Address</h6>
+       <?php 
         $attributes = array('class' => 'form-horizontal', 'role' => 'form');
         echo form_open('userPanel/changeEmail', $attributes);
-      ?>   
-      <div class="form-group">
-        <label for="new_email" class="col-xs-3 control-label">New Email address</label>
-        <div class="col-lg-6">
-          <input required="required" type="email" class="form-control" id="new_email" name="new_email" placeholder="New email">
-        </div><!-- col-lg-6 -->
-      </div><!-- form-group -->
-      <div class="form-group">
-      <div class="col-xs-offset-2 col-xs-5 pull-right">
-        <button type="submit" class="btn btn-info" id="change_email" name="change_email">Save Changes</button>
-      </div><!-- col-xs-offset-2 -->
-      </div><!-- form-group -->
-    </form>
-  </div><!-- /.col-md-12 -->
-  </div><!-- /.row -->
-  <div class="row">
-  <div class="col-md-12"><br/>
-    <h6>Change Password</h6>
-    <?php 
+      ?>                                 
+        <div class="form-group">
+          <label for="new_email" class="col-xs-3 control-label">New Email address</label>
+          <div class="col-lg-6">
+            <input required="required" type="email" class="form-control" id="new_email" name="new_email" placeholder="New email">
+          </div> <!-- col-lg-6 -->
+        </div><!-- form-group -->
+        <div class="form-group">
+        <div class="col-xs-offset-2 col-xs-5 pull-right">
+          <button type="submit" class="btn btn-info" id="change_email" name="change_email">Save Changes</button>
+        </div><!-- col-lg-2 -->
+        </div><!-- form-group -->
+      </form>
+    </div><!-- col-md-12 -->
+    </div><!-- row -->
+                              
+    <div class="row">
+    <div class="col-md-12"><br/>
+      <h6>Change Password</h6>
+      <?php 
       $attributes = array('class' => 'form-horizontal', 'role' => 'form');
       echo form_open('userPanel/changePassword', $attributes);
-    ?>     
-      <div class="form-group">
-        <label for="current_pw" class="col-xs-3 control-label">Current Password</label>
-        <div class="col-lg-6">
-          <input required="required" type="password" class="form-control" id="current_p" name="current_p" placeholder="Current Password">
-        </div><!-- col-lg-6 -->
-      </div><!-- form-group -->
-      <div class="form-group">
-        <label for="new_p" class="col-xs-3 control-label">New Password</label>
-        <div class="col-lg-6">
-          <input required="required" type="password" class="form-control" id="new_p" name="new_p" placeholder="New Password">
-        </div><!-- col-lg-6 -->
-      </div><!-- form-group -->
-      <div class="form-group">
-        <label for="retype_p" class="col-xs-3 control-label">Retype Password</label>
-        <div class="col-lg-6">
-          <input required="required" type="password" class="form-control" id="retype_p" name="retype_p" placeholder="Retype Password">
-        </div><!-- col-lg-6 -->
-      </div><!-- form-group -->
-      <div class="form-group">
-      <div class="col-xs-offset-2 col-xs-5 pull-right">
-        <button type="submit" id="change_p" name="change_p" class="btn btn-info">Save Changes</button>
-      </div><!-- col-lg-6 -->
-      </div><!-- form-group -->
-    </form>
-  </div><!-- /.col-md-12 -->
-  </div><!-- /.row -->
-</div> <!--tab container-->
-</div><!--tab pane-->
+      ?>  
+        <div class="form-group">
+          <label for="current_pw" class="col-xs-3 control-label">Current Password</label>
+          <div class="col-lg-6">
+            <input required="required" type="password" class="form-control" id="current_p" name="current_p" placeholder="Current Password">
+          </div> <!-- col-lg-6 -->
+        </div> <!-- form-group -->
+        <div class="form-group">
+          <label for="new_p" class="col-xs-3 control-label">New Password</label>
+          <div class="col-lg-6">
+            <input required="required" type="password" class="form-control" id="new_p" name="new_p" placeholder="New Password">
+          </div><!-- col-lg-6 -->
+        </div> <!-- form-group -->
+        <div class="form-group has-feedback">
+          <label for="retype_p" class="col-xs-3 control-label">Retype Password</label>
+          <div class="col-lg-6">
+            <input required="required" type="password" class="form-control" id="retype_p" name="retype_p" placeholder="Retype Password">
+            <i id='message'></i>
+          </div> <!-- col-lg-6 -->
+        </div> <!--  form-group -->
+        <div class="form-group">
+        <div class="col-xs-offset-2 col-xs-5 pull-right">
+          <button type="submit" id="change_p" name="change_p" class="btn btn-info">Save Changes</button>
+        </div><!-- col=xs.offset-2 -->
+        </div><!-- form-group -->
+      </form>
+    </div><!-- col-md-12 -->
+    </div><!-- row -->
+  </div> <!--tab container-->
+  </div><!--tab pane-->
+
 <div class="tab-pane" id="viewElectric">
 <div class="tab-container">
   <div class="page-header">
@@ -204,3 +207,51 @@
 </div> <!--row--> 
 <div class = "push"></div>
 </div> <!-- container -->
+
+<script type="text/javascript">
+$('#retype_p').on('keyup',function () {
+    if ($(this).val() == $('#new_p').val()) {
+    $('#message').removeClass('form-control-feedback fui-cross');
+    $('#message').addClass('form-control-feedback fui-check');
+    //$('#message').html('Password matches');
+    $('#message').css('color','green');
+    $('#formcontrol').removeClass('has-error');
+    $('#formcontrol').addClass('has-success');
+
+    } else {
+    $('#message').removeClass('form-control-feedback fui-check');
+    $('#message').addClass('form-control-feedback fui-cross');
+    //$('#message').html('Password do not match!');
+    $('#message').css('color','red');
+    $('#formcontrol').removeClass('has-success');
+    $('#formcontrol').addClass('has-error');
+
+  }
+});
+</script>
+<script>
+
+$('#tabPanel a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
+
+    // store the currently selected tab in the hash value
+    $("ul.nav-tabs > li > a").on("shown.bs.tab", function (e) {
+        var id = $(e.target).attr("href").substr(1);
+        window.location.hash = id;
+    });
+
+    // on load of the page: switch to the currently selected tab
+    var hash = window.location.hash;
+  if(hash) {
+    $('#tabPanel a[href="' + hash + '"]').tab('show');
+  }
+  else{
+     $('#tabPanel a[data-toggle="tab"]:first').tab('show');
+        }
+
+function toggler(divId) {
+    $("#" + divId).toggle();
+}
+</script>

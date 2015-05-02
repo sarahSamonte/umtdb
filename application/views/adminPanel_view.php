@@ -59,22 +59,43 @@
     <div id="addBuildingModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
     <div class="modal-content">
-      <?php echo form_open('adminPanel/addBuilding'); ?>
         <div class="modal-header modal-header-info">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Add Building TO DO: fit text</h4>
+          <h4 class="modal-title">Add Building</h4>
         </div><!-- modal-header -->
-        <div class="modal-body">            
-          <P>Username</P> 
-          <input type="text" class="form-control" value="" placeholder="Username (Default: lowercase of Building Name)" name="username" id="username" /><br/>
-          <P>Password</P> 
-          <input type="password" class="form-control" value="" placeholder="Password (Default: same as username)" name="password" id="password" /><br/>
-          <p>Building Name:</p>
-          <input required="required" type="text" class="form-control" value="" placeholder="Building Name" name="buildingName" id="buildingName" /><br/>
-          <p>Email:</p>
-          <input required="required" type="text" class="form-control" value="" placeholder="Email" name="email" id="email" /><br/>
-          <p>Address:</p>
-          <input required="required" type="text" class="form-control" value="" placeholder="Address" name="address" id="address" />
+        <div class="modal-body">
+        <form id="form1" name="form1" method="post" action="" class="form-horizontal">
+        <?php echo form_open('adminPanel/addBuilding'); ?>
+          <div class="form-group">
+            <label for="username" class="control-label col-xs-3">Username</label>
+            <div class="col-xs-8">
+              <input type="text" class="form-control" value="" placeholder="Username (Default: lowercase of Building Name)" name="username" id="username" />
+            </div> <!--col-xs-8-->
+          </div> <!--form-group-->
+          <div class="form-group">
+            <label for="password" class="control-label col-xs-3">Password</label>
+            <div class="col-xs-8">
+              <input type="password" class="form-control" value="" placeholder="Password (Default: same as username)" name="password" id="password" />
+            </div> <!--col-xs-8-->
+          </div> <!--form-group-->             
+          <div class="form-group">
+            <label for="buildingName" class="control-label col-xs-3">Building Name</label>
+            <div class="col-xs-8">
+             <input required="required" type="text" class="form-control" value="" placeholder="Building Name" name="buildingName" id="buildingName" />
+            </div> <!--col-xs-8-->
+          </div> <!--form-group-->     
+          <div class="form-group">
+            <label for="email" class="control-label col-xs-3">Email</label>
+            <div class="col-xs-8">
+             <input required="required" type="text" class="form-control" value="" placeholder="Email" name="email" id="email" />
+            </div> <!--col-xs-8-->
+          </div> <!--form-group-->
+          <div class="form-group">
+            <label for="address" class="control-label col-xs-3">Address</label>
+            <div class="col-xs-8">
+             <input required="required" type="text" class="form-control" value="" placeholder="Address" name="address" id="address" />
+            </div> <!--col-xs-8-->
+          </div> <!--form-group-->
         </div><!-- modal-body -->
         <div class="modal-footer">
           <input type="submit" class="btn btn-info pull-right" value="Add" name="addBldg" id="addBldg" />                    
@@ -200,7 +221,6 @@
       </div><!-- Modal-header -->
       <div class="modal-body">
         <form id="form1" name="form1" method="post" action="" class="form-horizontal">
-          <form id="form1" name="form1" method="post" action="">
         <div class="form-group">
           <label for="r_type" class="control-label col-xs-3">Report Type</label>
           <div class="col-xs-8">

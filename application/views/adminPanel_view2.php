@@ -189,7 +189,7 @@
 							Browse&hellip; <input required="required" type="file" id="eImg" name="eImg">
 							</span>
 							</span>
-							<input required="required" type="text" class="form-control" readonly>
+							<input required="required" type="text" class="form-control" readonly/>
 						</div><!-- input-group -->
 						</div><!-- col-xs-6 -->
 					</div><!-- form-group -->
@@ -248,7 +248,7 @@
 							
 			<div id="tabs2-2">
 			<div class="page-header">
-				<h4>Water Consumption Form</h4>	
+				<h6>Water Consumption Form</h6>	
 			</div><br/><!-- page header -->
 			
 			<form class="form-horizontal" method="POST" action="" role="form" enctype='multipart/form-data'>
