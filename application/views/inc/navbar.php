@@ -80,7 +80,10 @@ input[readonly] {
 #tabs1-1, #tabs2-1{
     padding-bottom: 60px;
 }
-#report, #addBuildingModal .modal-dialog {
+#addBuildingModal .modal-dialog {
+  width: 50%;
+}
+#report .modal-dialog {
   width: 50%;
 }
 
