@@ -52,7 +52,7 @@
 			$this->email->bcc('them@their-example.com');
 
 			$this->email->subject('Password Recovery');
-			$this->email->message('Here is your password: '$randomString'. We recommend that you change it after logging-in.');
+			$this->email->message('Here is your password: $randomString. We recommend that you change it after logging-in.');
 
 			$this->email->send();
 
