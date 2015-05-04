@@ -51,16 +51,15 @@ html, body{
 <?php echo form_open('index/login'); ?>
 	<div class="form-group">
     	<input required="required" type="text" class="form-control login-field" value="" placeholder="Username" name="username" id="username" />
-    	<label class="login-field-icon fui-user" for="username"></label>
-    </div> <!-- form-group -->
-    
+    	<label class="login-field-icon fui-user" for="username"></label>    	
+    </div> <!-- form-group -->    
     <div class="form-group">
     	<input required="required" type="password" class="form-control login-field" value="" placeholder="Password" name="password" id="password" />
     	<label class="login-field-icon fui-lock" for="password"></label>
     </div> <!-- form-group -->
     
     <input required="required" type="submit" class="btn btn-info btn-lg btn-block" value="Log in" name="login" id="login" />
-
+    <?="<p class='login-link' textcolor='red'>" . $errorMessage . "</p>"?>
 </form>
 
 <a class="login-link" href="#forgotPasswordModal" data-toggle="modal">Forgot your password?</a>	
@@ -80,7 +79,7 @@ html, body{
 		<h4 class="modal-title">Forgot Password?</h4>
 	</div> <!-- modal-header -->
 	
-	<form id="forgotPassForm" name="forgotPassForm" method="post" action="">
+	<?php echo form_open('index/forgotPassword'); ?>
 	<div class="modal-body">
 		<p>Email Address:</p>
 		<div class="form-group">

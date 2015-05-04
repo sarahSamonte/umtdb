@@ -204,3 +204,10 @@
 </div> <!--row--> 
 <div class = "push"></div>
 </div> <!-- container -->
+
+<script type="text/javascript">
+  $(document).ready( function () {
+    var etable = $('#e_table').DataTable();    
+    var wtable = $('#w_table').DataTable();    
+  } );
+</script>
