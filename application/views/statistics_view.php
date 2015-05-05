@@ -107,3 +107,24 @@ $('#tabPanel a').click(function (e) {
      $('#tabPanel a[data-toggle="tab"]:first').tab('show');
         }
 </script>
+
+<script>
+  $(document).ready( function () {
+    var etable = $('#e_stat_table').dataTable({
+      'language': {
+            search: '<i class="form-control-feedback fui-search"></i>',
+            searchPlaceholder: 'Search...'
+        }
+    });    
+    
+    var wtable = $('#w_stat_table').dataTable({
+      'language': {
+            search: '<i class="form-control-feedback fui-search"></i>',
+            searchPlaceholder: 'Search...'
+        }
+    });    
+    $('div.dataTables_filter input').addClass('form-control has-feedback');
+
+    
+  } );
+</script>
