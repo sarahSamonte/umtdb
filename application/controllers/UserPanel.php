@@ -26,23 +26,25 @@ class UserPanel extends CI_Controller{
 		$this->load->view('inc/footer_view');
 	}	
 
-	function changeEmail(){
-		echo "<script>alert('change email controller'); </script>";
+	function changeEmail(){		
 		$data = array(		
 			'userID' => $this->session->userID,	
 			'email' => $this->input->post('new_email')
 		);
 
 		$result = $this->users_model->changeEmail($data);
-		echo "<script>alert('$result'); </script>";
 		redirect('/userPanel/main');
 	}
 
 	function changePassword(){
-		echo "<script>alert('change password controller'); </script>";
 		//error checking
-		if($this->input->post('retype_p') != $this->input->post('new_p')){
-			echo "<script>alert('passwords do not match'); </script>";	
+		$pass = $this->input->post('current_p');
+		$sesPass = $this->session->password;
+		if(!password_verify($pass, $sesPass)){
+			echo "<script>alert('Current password invalid'); </script>";	
+		}
+		else if($this->input->post('retype_p') != $this->input->post('new_p')){
+			echo "<script>alert('Passwords do not match'); </script>";	
 		}
 		else{
 			$data = array(		
@@ -50,12 +52,12 @@ class UserPanel extends CI_Controller{
 				'password' => password_hash($this->input->post('new_p'), PASSWORD_BCRYPT)
 			);
 
-			$result = $this->users_model->changePassword($data);
-			echo "<script>alert('$result'); </script>";	
-		}
+			$result = $this->users_model->changePassword($data);			
+		}		
 		redirect('/userPanel/main');
 	}
 	
+		
 }
 
 ?>

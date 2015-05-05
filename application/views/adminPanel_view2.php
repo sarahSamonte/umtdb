@@ -24,7 +24,7 @@
 	</div><!--col-md-12-->
     </div> <!--row-->
 	<div class="row">
-    	<table class="table table-hover table-responsive" data-toggle="table"  data-select-item-name="myRadioName" id="submeters_table">
+    	<table class="table table-hover table-responsive" data-toggle="table"  data-select-item-name="myRadioName" id="submeters_table" name="submeters_table">
         <thead>
         <tr class="info">                        
         	<th>Submeter Name</th>
@@ -40,7 +40,8 @@
        	</table>
 		
 		<div class="pull-right">			
-				<input class= "btn btn-info" type="button" id="addSubmeter" name="addSubmeter" value="Add Submeter" data-toggle="modal" data-target="#addSubmeterModal"> </button>				
+			<input class= "btn btn-info" type="button" id="addSubmeter" name="addSubmeter" value="Add Submeter" data-toggle="modal" data-target="#addSubmeterModal"> </button>				
+			<input class= "btn btn-info" type="button" id="editSubmeter" name="editSubmeter" value="Edit Selected" data-toggle="modal" data-target="#editSubmeterModal"> </button>				
 		</div><!-- pull-right -->
 	</div> <!--row-->
 	
@@ -64,6 +65,29 @@
 	</div><!-- modal content -->
     </div><!-- modal dialog -->
     </div><!-- modal -->
+
+    <!-- Edit submeter modal start-->
+    <div id="editSubmeterModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+    <div class="modal-content">
+	    <div class="modal-header modal-header-info">
+	    	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Edit Submeter</h4>
+		</div><!-- modal-header -->
+		<?php echo form_open('adminPanel/editSubmeter'); ?>
+		<div class="modal-body">
+	    	<p>Submeter Name:</p>	  		
+	        <input required="required" type="text" class="form-control" value="" placeholder="Submeter Name" name="submeterName" id="submeterName" />         
+	        <input required="required" type="hidden" name="sName" id="sName" />         
+	    </div><!-- modal body -->
+        	<div class="modal-footer">
+        	<input required="required" type="submit" class="btn btn-info pull-right" value="Save" name="editSubmeter" id="editSubmeter" />	                                            	
+		</div><!-- modal footer -->
+        </form>	
+	</div><!-- modal content -->
+    </div><!-- modal dialog -->
+    </div><!-- modal -->
+
 	</div> <!--tab container -->
 	</div> <!--tab pane-->                               
 
@@ -106,7 +130,7 @@
 				        <?php echo "<td>" . $ebill['genCharge'] . "</td>"; ?>
 				        <?php echo "<td>" . $ebill['transCharge'] . "</td>"; ?>
 				        <?php echo "<td>" . $ebill['distCharge'] . "</td>"; ?>
-				        <?php echo "<td>" . "<a href=" . base_url() . "public/db_img/ebill/" . $ebill['imgDest'] . ">" . "View" . "</a>" . "</td>"; ?>
+				        <?php echo "<td>" . "<a target='_blank' href=" . base_url() . "public/db_img/ebill/" . $ebill['imgDest'] . ">" . "View" . "</a>" . "</td>"; ?>
 				        <?php echo "</tr>"?>
 				    <?php endforeach ?>
 				</tbody>								
@@ -118,7 +142,10 @@
 					<h6>Electricity Consumption Form</h6>						
 					<p></p>					
 				</div><br/><!-- page-header -->								 
-				<form class="form-horizontal" method="POST" action=" "role="form" enctype='multipart/form-data'>
+				<?php 
+			      	$attributes = array('class' => 'form-horizontal', 'role' => 'form', 'enctype' => 'multipart/form-data');
+			      	echo form_open_multipart('adminPanel/addEbill', $attributes);
+			    ?>	
 					<div class="form-group">
 						<label for="serviceID" class="col-xs-3 control-label">Service ID</label>
 						<div class="col-xs-6">
@@ -128,10 +155,10 @@
 					<div class="form-group">
 						<label for="submeter" class="col-xs-3 control-label">Submeter</label>
 						<div class="col-xs-6">									
-						<select required="required"id ="subselect" class="form-control select select-info" data-toggle="select" id="submeterName" name="submeterName">
+						<select required="required" class="form-control select select-info" data-toggle="select" id="submeterName" name="submeterName">
 							<option value="">Choose submeter</option>	
 							<?php foreach ($submeterList as $submeter): ?>       
-					          <?php echo "<option value='" . $submeter . "'>"?>
+					          <?php echo "<option value='" . $submeter['submeterName'] . "'>"?>
 					          <?php echo $submeter['submeterName']?>
 					          <?php echo "</option>"?>
 				      		<?php endforeach ?>										
@@ -186,7 +213,7 @@
 						<div class="input-group">
 							<span class="input-group-btn">
 							<span class="btn-file btn btn-primary">
-							Browse&hellip; <input required="required" type="file" id="eImg" name="eImg">
+							Browse&hellip; <input required="required" type="file" id="userfile" name="userfile">
 							</span>
 							</span>
 							<input required="required" type="text" class="form-control" readonly/>
@@ -235,7 +262,7 @@
 				        <?php echo "<td>" . $wbill['endDate'] . "</td>"; ?>
 				        <?php echo "<td>" . $wbill['totalCc'] . "</td>"; ?>
 				        <?php echo "<td>" . $wbill['totalCost'] . "</td>"; ?>        
-				        <?php echo "<td>" . "<a href=" . base_url() . "public/db_img/wbill/" . $ebill['imgDest'] . ">" . "View" . "</a>" . "</td>"; ?>
+				        <?php echo "<td>" . "<a target='_blank' href=" . base_url() . "public/db_img/wbill/" . $wbill['imgDest'] . ">" . "View" . "</a>" . "</td>"; ?>
 				        <?php echo "</tr>"?>
 				    <?php endforeach ?>
 				</tbody>				
@@ -248,10 +275,15 @@
 							
 			<div id="tabs2-2">
 			<div class="page-header">
+
 				<h6>Water Consumption Form</h6>	
 			</div><br/><!-- page header -->
 			
-			<form class="form-horizontal" method="POST" action="" role="form" enctype='multipart/form-data'>
+			<?php 
+			      	$attributes = array('class' => 'form-horizontal', 'role' => 'form', 'enctype' => 'multipart/form-data');
+			      	echo form_open_multipart('adminPanel/addWbill', $attributes);
+			    ?>	
+
 				<div class="form-group">
 					<label for="serviceID" class="col-xs-3 control-label">Service ID</label>
 					<div class="col-xs-6">
@@ -288,7 +320,7 @@
 					<div class="input-group">
 						<span class="input-group-btn">
 						<span class="btn btn-primary btn-file">
-							Browse&hellip; <input required="required" type="file" id="wImg" name="wImg">
+							Browse&hellip; <input required="required" type="file" id="userfile" name="userfile">
 						</span>
 						</span>
 						<input required="required" type="text" class="form-control" readonly>
@@ -344,7 +376,7 @@ function toggler(divId) {
 <script>
 	 $(function() {
 		$( "#startDate1" ).datepicker({
-			inline: true
+			dateFormat: 'yy-mm-dd'
 		});
 
 	});
@@ -376,3 +408,57 @@ function toggler(divId) {
 	$( "#tabs2" ).tabs();		
 
 </script>	
+
+<script type="text/javascript">
+  $(document).ready( function () {
+    var stable = $('#submeters_table').DataTable();
+    var selected;
+    
+    $('#s_table_body').on( 'click', 'tr', function () {
+      if ( $(this).hasClass('selected') ) {
+        $(this).removeClass('selected');
+      }
+      else {
+        stable.$('tr.selected').removeClass('selected');
+        $(this).addClass('selected');
+      }
+      selected = stable.row('.selected').data();
+      selected = selected.toString();              
+      document.getElementById("sName").value = selected;      
+    } );
+    
+    var etable = $('#e_table').DataTable();
+    var selected;
+    
+    $('#e_table_body').on( 'click', 'tr', function () {
+      if ( $(this).hasClass('selected') ) {
+        $(this).removeClass('selected');
+      }
+      else {
+        etable.$('tr.selected').removeClass('selected');
+        $(this).addClass('selected');
+      }
+      selected = etable.row('.selected').data();
+      selected = selected.toString();            
+      alert(selected);
+      document.getElementById("eName").value = selected;      
+    } );
+    
+    var wtable = $('#w_table').DataTable();
+    var selected;
+    
+    $('#w_table_body').on( 'click', 'tr', function () {
+      if ( $(this).hasClass('selected') ) {
+        $(this).removeClass('selected');
+      }
+      else {
+        wtable.$('tr.selected').removeClass('selected');
+        $(this).addClass('selected');
+      }
+      selected = wtable.row('.selected').data();
+      selected = selected.toString();            
+      alert(selected);
+      document.getElementById("sName").value = selected;      
+    } );
+  } );
+</script>

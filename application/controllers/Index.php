@@ -4,12 +4,13 @@ class Index extends CI_Controller{
 	function __construct(){	
 		parent::__construct();
 		$this->load->helper(array('url', 'form'));
-		$this->load->library(array('session', 'form_validation'));
+		$this->load->library(array('session', 'form_validation', 'email'));
 		$this->load->model('users_model');
 	}
 
-	function view(){	
+	function view($errorMessage = ""){	
 		$data['title'] = "UMTdb HOME";
+		$data['errorMessage'] = $errorMessage;
 		$this->load->view('inc/header_view', $data);
 		$this->load->view('index_view');
 		$this->load->view('inc/footer_view');
@@ -24,12 +25,12 @@ class Index extends CI_Controller{
 		
 		$result = $this->users_model->login($data);
 
-		if($result != null){
-			echo "<script>alert('valid'); </script>";			
+		if($result != null){		
 
 			$sess_array = array(
 				'userID' => $result->userID,
 				'username' => $result->username,
+				'password' => $result->password,
 				'buildingName' => $result->buildingName,
 				'email' => $result->email,
 				'address' => $result->address,
@@ -49,12 +50,19 @@ class Index extends CI_Controller{
 			}
 		}	
 		else{
-			echo "<script>alert('not valid'); </script>";
-			$this->view();
+			$this->view("Error, invalid username and/or password");
 		}
 	}
 
 	function forgotPassword(){
+		$targetEmail = $this->input->post('email');
+		$result = $this->users_model->emailVerif($targetEmail);
+		if($result == "Invalid"){
+			echo "<script>alert('wrong')</script>";
+		}
+		else{
+			echo "<scrpit>alert('$result')</script>";	
+		}
 		
 	}	
 

@@ -83,9 +83,13 @@ input[readonly] {
 #addBuildingModal .modal-dialog {
   width: 50%;
 }
+#editBuildingModal .modal-dialog {
+  width: 40%;
+}
 #report .modal-dialog {
   width: 50%;
 }
+
 
 
 </style>

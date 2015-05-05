@@ -37,25 +37,60 @@
       </tr>
       </thead>
       <tbody id="b_table_body">
-        <?php foreach ($buildingList as $building): ?>       
-          <?php echo "<tr><td></td><td>"?>
-          <?php echo $building['buildingName']?>
-          <?php echo "</td></tr>"?>
-      <?php endforeach ?>
-      </tbody>
+	      <?php foreach ($buildingList as $building): ?>       
+	        <?php echo "<tr><td></td><td>"?>
+	        <?php echo $building['buildingName']?>
+	        <?php echo "</td></tr>"?>
+	      <?php endforeach ?>
+      </tbody>  
     </table>
     
-    
-      <div class="pull-right">          
-        <?php echo form_open('adminPanel/buildingView'); ?>
-          <input class= "btn btn-info" type="button" id="add_button" value="Add Building" data-toggle="modal" data-target="#addBuildingModal">                  
+
+	  <div class="pull-right">					
+        <?php echo form_open('adminPanel/selectBuilding'); ?>
+          <input class= "btn btn-info" type="button" id="add_button" value="Add Building" data-toggle="modal" data-target="#addBuildingModal">					        
           <input type="hidden" id="viewBuilding" name="viewBuilding">
-          <input class= "btn btn-info" type="submit" id="view_button"  name="view_button" value="View Selected" />          
+          <input class= "btn btn-info" type="button" id="add_button" value="Edit Selected" data-toggle="modal" data-target="#editBuildingModal">                  
+  		  <input class= "btn btn-info" type="submit" id="view_button"  name="view_button" value="View Selected"	/>  				
         </form>
       </div> <!-- pull-right -->                  
     </div> <!--row-->
-                     
+
+    
     <!--modal start-->
+    <div id="editBuildingModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+        <div class="modal-header modal-header-info">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Edit Building Info</h4>
+        </div><!-- modal-header -->
+        <div class="modal-body">
+        <form id="form1" name="form1" method="post" action="" class="form-horizontal">
+        <?php echo form_open('adminPanel/editBuilding'); ?>            
+          <input type="hidden" required="required" name="bName" id="bName" />
+          <div class="form-group">
+            <label for="username" class="control-label col-xs-3">Username</label>
+            <div class="col-xs-8">
+              <input type="text" class="form-control" value="" placeholder="Username" name="username" id="username" />
+            </div> <!--col-xs-8-->
+          </div> <!--form-group-->
+          <div class="form-group">
+            <label for="buildingName" class="control-label col-xs-3">Building Name</label>
+            <div class="col-xs-8">
+              <input type="text" class="form-control" value="" placeholder="Building Name" name="buildingName" id="buildingName" />
+            </div> <!--col-xs-8-->
+          </div> <!--form-group-->
+        </div><!-- modal-body -->
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-info pull-right" value="Save" name="editBldg" id="editBldg" />                    
+        </div><!-- modal-footer -->
+      </form>   
+    </div><!-- modal-content -->
+    </div><!-- modal-dialog -->
+    </div><!-- modal -->
+
+		<!--modal start-->
     <div id="addBuildingModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
     <div class="modal-content">
@@ -69,13 +104,13 @@
           <div class="form-group">
             <label for="username" class="control-label col-xs-3">Username</label>
             <div class="col-xs-8">
-              <input type="text" class="form-control" value="" placeholder="Username (Default: lowercase of Building Name)" name="username" id="username" />
+              <input type="text" class="form-control" value="" placeholder="Default: lowercase of Building Name" name="username" id="username" />
             </div> <!--col-xs-8-->
           </div> <!--form-group-->
           <div class="form-group">
             <label for="password" class="control-label col-xs-3">Password</label>
             <div class="col-xs-8">
-              <input type="password" class="form-control" value="" placeholder="Password (Default: same as username)" name="password" id="password" />
+              <input type="password" class="form-control" value="" placeholder="Default: same as username" name="password" id="password" />
             </div> <!--col-xs-8-->
           </div> <!--form-group-->             
           <div class="form-group">
@@ -115,65 +150,64 @@
     <?php 
       $attributes = array('class' => 'form-horizontal', 'role' => 'form');
       echo form_open('adminPanel/statistics', $attributes);
-    ?>   
-      <div class="form-group">
-        <label for="s_month" class="col-xs-3 control-label">Starting Month</label>
-        <div class="col-xs-6">                  
-        <select class="form-control select select-info" data-toggle="select" id="s_month" name="s_month">
-          <option value="">Starting month (Default: January)</option>
-          <option value="1">January</option>
-          <option value="2">February</option>
-          <option value="3">March</option>
-          <option value="4">April</option>
-          <option value="5">May</option>
-          <option value="6">June</option>
-          <option value="7">July</option>
-          <option value="8">August</option>
-          <option value="9">September</option>
-          <option value="10">October</option>
-          <option value="11">November</option>
-          <option value="12">December</option>
-        </select>
-        </div><!-- col-xs-6 -->
-      </div> <!-- form-group -->
-      <div class="form-group">
-        <label for="e_month" class="col-xs-3 control-label">Ending Month</label>
-        <div class="col-xs-6">                  
-          <select class="form-control select select-info" data-toggle="select" id="e_month" name="e_month">
-            <option value="">Ending month (Default: Current Month)</option>
-            <option value="1">January</option>
-            <option value="2">February</option>
-            <option value="3">March</option>
-            <option value="4">April</option>
-            <option value="5">May</option>
-            <option value="6">June</option>
-            <option value="7">July</option>
-            <option value="8">August</option>
-            <option value="9">September</option>
-            <option value="10">October</option>
-            <option value="11">November</option>
-            <option value="12">December</option>
-          </select>
-        </div><!-- col-xs-6 -->
-      </div><!-- form-group -->
-      <div class="form-group">
-        <label for="s_year" class="col-xs-3 control-label">Starting Year</label>
-        <div class="col-xs-6">                  
-          <input type="text" class="form-control" id="s_year" name="s_year" placeholder="Starting year (Default: 2010)" >
-        </div><!-- col-xs-6 -->
-      </div><!-- form-group -->
-      <div class="form-group">
-        <label for="e_year" class="col-xs-3 control-label">Ending Year</label>
-        <div class="col-xs-6">                  
-          <input type="text" class="form-control" id="e_year" name="e_year" placeholder="Ending year (Default: Current Year)" >
-        </div><!-- col-xs-6 -->
-      </div> <!-- form-group -->
-      <div class="form-group">
-        <div class="col-xs-offset-8">
-          <button type="submit" class="btn btn-info" value="Submit" name="submitStat" id="submitStat">Submit</button>
-        </div> <!-- col-cs-offset-8 -->
-      </div>  <!-- form-group -->
-    </form>
+    ?>	 
+		  <div class="form-group">
+			  <label for="s_month" class="col-xs-3 control-label">Starting Month</label>
+				<div class="col-xs-6">									
+				<select class="form-control select select-info" data-toggle="select" id="s_month" name="s_month">
+					<option value="1">January</option>
+					<option value="2">February</option>
+					<option value="3">March</option>
+					<option value="4">April</option>
+					<option value="5">May</option>
+					<option value="6">June</option>
+					<option value="7">July</option>
+					<option value="8">August</option>
+					<option value="9">September</option>
+					<option value="10">October</option>
+					<option value="11">November</option>
+					<option value="12">December</option>
+				</select>
+				</div><!-- col-xs-6 -->
+			</div> <!-- form-group -->
+			<div class="form-group">
+				<label for="e_month" class="col-xs-3 control-label">Ending Month</label>
+				<div class="col-xs-6">									
+					<select class="form-control select select-info" data-toggle="select" id="e_month" name="e_month">
+						<option value="">Current Month</option>
+						<option value="1">January</option>
+						<option value="2">February</option>
+						<option value="3">March</option>
+						<option value="4">April</option>
+						<option value="5">May</option>
+						<option value="6">June</option>
+						<option value="7">July</option>
+						<option value="8">August</option>
+						<option value="9">September</option>
+						<option value="10">October</option>
+						<option value="11">November</option>
+						<option value="12">December</option>
+					</select>
+				</div><!-- col-xs-6 -->
+			</div><!-- form-group -->
+			<div class="form-group">
+				<label for="s_year" class="col-xs-3 control-label">Starting Year</label>
+				<div class="col-xs-6">									
+					<input type="text" class="form-control" id="s_year" name="s_year" placeholder="Default: 2010" value="2010">
+				</div><!-- col-xs-6 -->
+			</div><!-- form-group -->
+			<div class="form-group">
+				<label for="e_year" class="col-xs-3 control-label">Ending Year</label>
+				<div class="col-xs-6">									
+					<input type="text" class="form-control" id="e_year" name="e_year" placeholder="Default: Current Year" >
+				</div><!-- col-xs-6 -->
+			</div> <!-- form-group -->
+			<div class="form-group">
+				<div class="col-xs-offset-8">
+					<button type="submit" class="btn btn-info" value="Submit" name="submitStat" id="submitStat">Submit</button>
+				</div> <!-- col-cs-offset-8 -->
+			</div>	<!-- form-group -->
+		</form>
   </div> <!--tab-container-->
   </div><!--tab-pane-->
                
@@ -196,7 +230,7 @@
       <img src="<?=base_url()?>public/img/icons/png/csv.png" class="displayed"/>
       <br/>
       <div class="text-center">
-        <a href="eDatabase.php" class="btn btn-info btn-lg">Download</a>
+        <a href="<?=site_url('adminPanel/getElecDb')?>" class="btn btn-info btn-lg">Download</a>
         <br/>
         <p>Electricity Database</p>
       </div><!-- text-center -->   
@@ -205,7 +239,7 @@
       <img src="<?=base_url()?>public/img/icons/png/csv.png" class="displayed"/>
       <br/>
       <div class="text-center">
-        <a href="wDatabase.php" class="btn btn-info btn-lg">Download</a>
+        <a href="<?=site_url('adminPanel/getWaterDb')?>" class="btn btn-info btn-lg">Download</a>
         <br/>
         <p>Water Database</p>
       </div> <!-- text-center -->
@@ -221,6 +255,7 @@
       </div><!-- Modal-header -->
       <div class="modal-body">
         <form id="form1" name="form1" method="post" action="" class="form-horizontal">
+        <?php echo form_open('adminPanel/dlReport', $attributes)?>
         <div class="form-group">
           <label for="r_type" class="control-label col-xs-3">Report Type</label>
           <div class="col-xs-8">
@@ -236,7 +271,12 @@
           <div class="col-xs-8">
             <select required="required" class="form-control select select-info" data-toggle="select" id="b_name" name="b_name">
               <option value="">Building Name</option>
-    
+              <?php foreach ($buildingList as $building): ?>       
+                <?php $buildingName = $building['buildingName']; ?>
+                <?php echo "<option value='$buildingName'>"?>
+                <?php echo $buildingName ?>
+                <?php echo "</option>"?>
+              <?php endforeach ?> 
             </select> 
           </div> <!--col-xs-8-->
         </div> <!--form-group-->
@@ -312,7 +352,10 @@
     <div class="row">
     <div class="col-md-12">
       <h6>Change Email Address</h6>
-      <form class="form-horizontal" role="form" method="POST" action="">                                
+       <?php 
+        $attributes = array('class' => 'form-horizontal', 'role' => 'form');
+        echo form_open('adminPanel/changeEmail', $attributes);
+      ?>                                
         <div class="form-group">
           <label for="new_email" class="col-xs-3 control-label">New Email address</label>
           <div class="col-lg-6">
@@ -331,7 +374,10 @@
     <div class="row">
     <div class="col-md-12"><br/>
       <h6>Change Password</h6>
-      <form class="form-horizontal" role="form" method="POST" action="">
+      <?php 
+        $attributes = array('class' => 'form-horizontal', 'role' => 'form');
+        echo form_open('adminPanel/changePassword', $attributes);
+      ?> 
         <div class="form-group">
           <label for="current_pw" class="col-xs-3 control-label">Current Password</label>
           <div class="col-lg-6">
@@ -439,8 +485,8 @@ function toggler(divId) {
       selected = table.row('.selected').data();
       selected = selected.toString();
       selected = selected.split(',')[1];      
-      alert(selected);
-      document.getElementById("viewBuilding").value = selected;      
+      document.getElementById("viewBuilding").value = selected; 
+      document.getElementById("bName").value = selected;      
     } );
     
     $('div.dataTables_filter input').addClass('form-control has-feedback');

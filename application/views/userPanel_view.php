@@ -209,6 +209,7 @@
 </div> <!-- container -->
 
 <script type="text/javascript">
+
 $('#retype_p').on('keyup',function () {
     if ($(this).val() == $('#new_p').val()) {
     $('#message').removeClass('form-control-feedback fui-cross');
@@ -255,3 +256,25 @@ function toggler(divId) {
     $("#" + divId).toggle();
 }
 </script>
+
+<script>
+  $(document).ready( function () {
+    var etable = $('#e_table').dataTable({
+      'language': {
+            search: '<i class="form-control-feedback fui-search"></i>',
+            searchPlaceholder: 'Search...'
+        }
+    });    
+    
+    var wtable = $('#w_table').dataTable({
+      'language': {
+            search: '<i class="form-control-feedback fui-search"></i>',
+            searchPlaceholder: 'Search...'
+        }
+    });    
+    $('div.dataTables_filter input').addClass('form-control has-feedback');
+
+    
+  } );
+</script>
+

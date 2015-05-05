@@ -51,14 +51,14 @@ html, body{
       <input required="required" type="text" class="form-control login-field" value="" placeholder="Username" name="username" id="username" />
       <label class="login-field-icon fui-user" for="username"></label>
     </div> <!-- form-group -->
-    
+
     <div class="form-group">
       <input required="required" type="password" class="form-control login-field" value="" placeholder="Password" name="password" id="password" />
       <label class="login-field-icon fui-lock" for="password"></label>
     </div> <!-- form-group -->
     
     <input required="required" type="submit" class="btn btn-info btn-lg btn-block" value="Log in" name="login" id="login" />
-
+    <?="<p class='login-link' textcolor='red'>" . $errorMessage . "</p>"?>
 </form>
 
 <a class="login-link" href="#forgotPasswordModal" data-toggle="modal">Forgot your password?</a> 
@@ -73,6 +73,7 @@ html, body{
 <div class="modal fade bs-example-modal-sm" id="forgotPasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-sm">
 <div class="modal-content">
+
   <div class="modal-header modal-header-info">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <h4 class="modal-title">Forgot Password?</h4>
@@ -81,7 +82,7 @@ html, body{
   <div class="modal-body">
   <p>Email Address:</p>
   <form id="forgotPassForm" name="forgotPassForm" method="post" action="">
-  
+    <?php echo form_open('index/forgotPassword'); ?>
     <div class="form-group">
     <div class="col-md-12 input-group">
       <span class="input-group-addon">@</span>
